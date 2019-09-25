@@ -186,10 +186,10 @@ map <LEADER>l <C-w>l
 noremap s <nop>
 
 " split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
-map up :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
-map do :set splitbelow<CR>:split<CR>
-map le :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
-map ri :set splitright<CR>:vsplit<CR>
+map sk :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
+map sj :set splitbelow<CR>:split<CR>
+map sh :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
+map sl :set splitright<CR>:vsplit<CR>
 
 " Resize splits with arrow keys
 map <up> :res +5<CR>
@@ -198,9 +198,9 @@ map <left> :vertical resize-5<CR>
 map <right> :vertical resize+5<CR>
 
 " Place the two screens up and down
-noremap sh <C-w>t<C-w>K
+noremap sa <C-w>t<C-w>K
 " Place the two screens side by side
-noremap sv <C-w>t<C-w>H
+noremap sd <C-w>t<C-w>H
 
 " Rotate screens
 noremap srh <C-w>b<C-w>K
@@ -216,8 +216,8 @@ map ta :tabe<CR>
 map tj :+tabnext<CR>
 map tk :-tabnext<CR>
 " Move the tabs with tmn and tmi
-map tmk :-tabmove<CR>
-map tmj :+tabmove<CR>
+map trk :-tabmove<CR>
+map trj :+tabmove<CR>
 
 
 " ===
@@ -250,6 +250,7 @@ autocmd BufEnter * silent! lcd %:p:h
 " Call figlet
 map tx :r !figlet
 
+
 " Compile function
 map r :call CompileRunGcc()<CR>
 func! CompileRunGcc()
@@ -258,8 +259,11 @@ func! CompileRunGcc()
     exec "!g++ % -o %<"
     exec "!time ./%<"
   elseif &filetype == 'cpp'
-    exec "!g++ % -o %<"
-    exec "!time ./%<"
+	exec "!g++ -std=c++11 % -Wall -o %<"
+    set splitbelow
+    :sp
+    :res -15
+    :term ./%<
   elseif &filetype == 'java'
     exec "!javac %"
     exec "!time java %<"
@@ -272,7 +276,7 @@ func! CompileRunGcc()
     :sp
     :term python3 %
   elseif &filetype == 'html'
-    exec "!chromium % &"
+    exec "!chromium-browser % &"
   elseif &filetype == 'markdown'
     exec "MarkdownPreview"
   endif
@@ -551,7 +555,7 @@ let g:mkdp_refresh_slow = 0
 let g:mkdp_command_for_global = 0
 let g:mkdp_open_to_the_world = 0
 let g:mkdp_open_ip = ''
-let g:mkdp_browser = 'chromium'
+let g:mkdp_browser = 'chromium-browser'
 let g:mkdp_echo_preview_url = 0
 let g:mkdp_browserfunc = ''
 let g:mkdp_preview_options = {

@@ -15,3 +15,5 @@ autocmd Filetype markdown inoremap ,2 ##<Space><Enter><++><Esc>kA
 autocmd Filetype markdown inoremap ,3 ###<Space><Enter><++><Esc>kA
 autocmd Filetype markdown inoremap ,4 ####<Space><Enter><++><Esc>kA
 autocmd Filetype markdown inoremap ,l --------<Enter>
+
+autocmd Filetype markdown inoremap ,> > * 
