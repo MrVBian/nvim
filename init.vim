@@ -198,13 +198,13 @@ map <left> :vertical resize-5<CR>
 map <right> :vertical resize+5<CR>
 
 " Place the two screens up and down
-noremap sa <C-w>t<C-w>K
+noremap sp <C-w>t<C-w>K
 " Place the two screens side by side
-noremap sd <C-w>t<C-w>H
+noremap sv <C-w>t<C-w>H
 
 " Rotate screens
-noremap srh <C-w>b<C-w>K
-noremap srv <C-w>b<C-w>H
+noremap sP <C-w>b<C-w>K
+noremap sV <C-w>b<C-w>H
 
 
 " ===
@@ -250,6 +250,14 @@ autocmd BufEnter * silent! lcd %:p:h
 " Call figlet
 map tx :r !figlet
 
+" exec "!g++ -std=c++11 % -Wall -o %<"
+"    set splitbelow
+"    :sp
+"    :res -15
+"    :term ./%<
+
+"    exec "!g++ % -o %<"
+"    exec "!time ./%<"
 
 " Compile function
 map r :call CompileRunGcc()<CR>
@@ -258,23 +266,31 @@ func! CompileRunGcc()
   if &filetype == 'c'
     exec "!g++ % -o %<"
     exec "!time ./%<"
-  elseif &filetype == 'cpp'
-	exec "!g++ -std=c++11 % -Wall -o %<"
-    set splitbelow
+    set splitright
+    ":vsp
+    ":vertical resize-10
     :sp
-    :res -15
+    :term ./%<
+  elseif &filetype == 'cpp'
+    exec "!g++ % -o %<"
+    exec "!time ./%<"
+    set splitright
+    ":vsp
+    ":vertical resize-10
+    :sp
     :term ./%<
   elseif &filetype == 'java'
     exec "!javac %"
     exec "!time java %<"
   elseif &filetype == 'sh'
-    :!time bash %
+    :!time bash %  
   elseif &filetype == 'python'
     set splitright
     ":vsp
     ":vertical resize-10
     :sp
-    :term python3 %
+    :term python %
+    "exec "!time python %"
   elseif &filetype == 'html'
     exec "!chromium-browser % &"
   elseif &filetype == 'markdown'
@@ -313,8 +329,9 @@ Plug 'liuchengxu/space-vim-theme'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 "Plug 'ctrlpvim/ctrlp.vim', { 'on': 'CtrlP' }
-Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
+Plug 'francoiscabrol/ranger.vim'
 
 " Taglist
 Plug 'majutsushi/tagbar', { 'on': 'TagbarOpenAutoClose' }
@@ -393,6 +410,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'kana/vim-textobj-user'
 Plug 'roxma/nvim-yarp'
+Plug 'rbgrouleff/bclose.vim' " For ranger.vim
 
 call plug#end()
 
@@ -458,9 +476,9 @@ let NERDTreeMapOpenInTab = "o"
 let NERDTreeMapOpenInTabSilent = "O"
 let NERDTreeMapPreview = ""
 let NERDTreeMapCloseDir = ""
-let NERDTreeMapChangeRoot = "sr"
+let NERDTreeMapChangeRoot = "s"
 let NERDTreeMapMenu = ","
-let NERDTreeMapToggleHidden = "hi"
+let NERDTreeMapToggleHidden = "a"
 
 
 " ==
@@ -531,10 +549,10 @@ nmap <leader>rn <Plug>(coc-rename)
 
 
 " ===
-" === indentLine
+" === indentLine 缩进线
 " ===
-let g:indentLine_char = '│'
-let g:indentLine_color_term = 238
+let g:indentLine_char = '│'              " 设置对齐线的字符
+let g:indentLine_color_term = 238        " 设置对齐线的颜色 
 let g:indentLine_color_gui = '#333333'
 silent! unmap <LEADER>ig
 autocmd WinEnter * silent! unmap <LEADER>ig
@@ -574,14 +592,14 @@ let g:mkdp_page_title = '「${name}」'
 
 
 " ===
-" === Python-syntax
+" === Python-syntax     " Python 代码高亮
 " ===
 let g:python_highlight_all = 1
 " let g:python_slow_sync = 0
 
 
 " ===
-" === Taglist
+" === Taglist           " 代码文件结构
 " ===
 map <silent> T :TagbarOpenAutoClose<CR>
 
@@ -595,7 +613,14 @@ map <LEADER>tm :TableModeToggle<CR>
 " ===
 " === FZF
 " ===
-map <C-p> :FZF<CR>
+map <C-f> :FZF<CR>
+
+
+" ===
+" === Ranger.vim
+" ===
+nnoremap R :Ranger<CR>
+let g:ranger_map_keys = 0
 
 
 " ===
@@ -666,7 +691,9 @@ let g:startify_lists = [
 " ===
 " === Far.vim
 " ===
-nnoremap <silent> <LEADER>f :F  %<left><left>
+" nnoremap <silent> <LEADER>f :F  %<left><left>
+noremap <LEADER>fa :F%<left><left>
+noremap <LEADER>fr :Farp<CR>
 
 " ===
 " === vim-calc
@@ -681,7 +708,7 @@ nnoremap <silent> <LEADER>f :F  %<left><left>
 " ===
 " === emmet
 " ===
-let g:user_emmet_leader_key='<C-f>'
+let g:user_emmet_leader_key='<C-y>'
 
 
 " ===
