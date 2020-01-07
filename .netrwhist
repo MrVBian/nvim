@@ -1,9 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/home/bian/.config/nvim/tmp/undo'
-let g:netrw_dirhist_2='/home/bian/.config/nvim'
-let g:netrw_dirhist_3='/home/bian/document/github/notes/python'
-let g:netrw_dirhist_4='/home/bian/anaconda3'
-let g:netrw_dirhist_5='/home/bian/.config/ranger'
-let g:netrw_dirhist_6='/home/bian/document'
-let g:netrw_dirhist_7='/home/bian/.config/nvim/plugged/vim-table-mode'
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/etc/apt/sources.list.d'
+let g:netrw_dirhist_2='/home/bian/document/practical/1.5.2/tom/css'
+let g:netrw_dirhist_3='/home/bian/document/practical/1.5.2/tom'
+let g:netrw_dirhist_4='/home/bian/document/practical/1.6.1/mi.html'
+let g:netrw_dirhist_5='/home/bian/document/practical/1.6.2/mi/css'
