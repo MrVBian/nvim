@@ -37,8 +37,8 @@
 | `<DOWN>`           | 增大下分屏5 size                  | :res -5<CR>                    |
 | `sv`               | 转为左右分屏                      | <C-w>t<C-w>H                   |
 | `sp`               | 转为上下分屏                      | <C-w>t<C-w>K                   |
-| `sV`               | 转为左右分屏并交换                | <C-w>b<C-w>H                   |
-| `sP`               | 转为上下分屏并交换                | <C-w>b<C-w>K                   |
+| `sL`               | 转为左右分屏并交换                | <C-w>b<C-w>H                   |
+| `sJ`               | 转为上下分屏并交换                | <C-w>b<C-w>K                   |
 | `ta`               | 创建一个新的tabe                  | :tabe<CR>                      |
 | `tj`               | 切换到下一个tabe                  | :+tabnext<CR>                  |
 | `tk`               | 切换到上一个tabe                  | :-tabnext<CR>                  |

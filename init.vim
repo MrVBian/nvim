@@ -203,8 +203,8 @@ noremap sp <C-w>t<C-w>K
 noremap sv <C-w>t<C-w>H
 
 " Rotate screens
-noremap sP <C-w>b<C-w>K
-noremap sV <C-w>b<C-w>H
+noremap sJ <C-w>b<C-w>K
+noremap sL <C-w>b<C-w>H
 
 
 " ===
